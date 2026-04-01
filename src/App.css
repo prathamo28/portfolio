@@ -1,0 +1,18 @@
+/* App layout */
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-body {
+  display: flex;
+  flex: 1;
+  margin-top: var(--aws-nav-height); /* offset sticky topnav */
+}
+
+.app-content {
+  flex: 1;
+  min-width: 0;
+  background: var(--aws-page-bg);
+}

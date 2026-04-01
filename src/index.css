@@ -1,0 +1,116 @@
+/* AWS Console Portfolio — Global Styles */
+
+/* Normalize via Cloudscape */
+@import '@cloudscape-design/global-styles/index.css';
+
+/* Open Sans — closest to Amazon Ember */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+
+/* ── CSS Variables — AWS Console Design Tokens ─────────────────────── */
+:root {
+  /* Navigation */
+  --aws-nav-bg: #232f3e;
+  --aws-nav-height: 36px;
+  --aws-secondary-nav-height: 34px;
+
+  /* Brand colors */
+  --aws-orange: #ec7211;
+  --aws-orange-hover: #d45f08;
+  --aws-orange-dark: #c45000;
+  --aws-blue-link: #0073bb;
+  --aws-blue-link-hover: #005f99;
+
+  /* Status */
+  --aws-green: #1d8102;
+  --aws-red: #d13212;
+  --aws-yellow: #d4861a;
+  --aws-grey-status: #687078;
+
+  /* Backgrounds */
+  --aws-page-bg: #f2f3f3;
+  --aws-card-bg: #ffffff;
+  --aws-search-bg: #3a4a5c;
+  --aws-sidebar-bg: #ffffff;
+
+  /* Borders */
+  --aws-border: #d5dbdb;
+  --aws-border-light: #eaeded;
+  --aws-border-dark: #aab7b8;
+
+  /* Text */
+  --aws-text-primary: #16191f;
+  --aws-text-secondary: #545b64;
+  --aws-text-muted: #687078;
+  --aws-text-white: #ffffff;
+  --aws-text-nav: #d5dbdb;
+
+  /* Sidebar */
+  --aws-sidebar-width: 220px;
+
+  /* Typography */
+  --aws-font-base: 13px;
+  --aws-font-sm: 11px;
+  --aws-font-md: 14px;
+  --aws-font-lg: 20px;
+}
+
+/* ── Global Reset ───────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-size: var(--aws-font-base);
+  color: var(--aws-text-primary);
+  background-color: var(--aws-page-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* Reset Cloudscape/Vite defaults */
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  text-align: left;
+  border: none;
+}
+
+a {
+  color: var(--aws-blue-link);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: var(--aws-blue-link-hover);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* ── Scrollbar ──────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--aws-border-light); }
+::-webkit-scrollbar-thumb { background: var(--aws-border-dark); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--aws-text-muted); }
