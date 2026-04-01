@@ -1,60 +1,112 @@
 /* Experience page — styled like EC2 Instances table */
-import { Fragment } from 'react'
+import { useState } from 'react'
 
 const EXPERIENCE = [
   {
-    id: 'i-001',
-    company: 'Nordea Bank',
-    role: 'Senior Platform Engineer / SRE',
-    period: 'Jan 2023 – Present',
-    location: 'Warsaw, Poland (Remote)',
-    type: 'Full-time',
+    id: 'i-nordea-001',
+    company: 'Nordea',
+    role: 'Senior Cloud Site Reliability Engineer',
+    period: 'Aug 2024 – Present',
+    location: 'Gdansk, Poland',
+    type: 'Banking · Full-time',
     status: 'running',
-    tech: 'AWS, EKS, Terraform, GitHub Actions, Prometheus, Grafana, Vault',
+    tech: 'AWS, EKS, Terraform, Datadog, CloudWatch, Helm, ISO27001',
     highlights: [
-      'Architected multi-account AWS landing zone serving 200+ engineers',
-      'Reduced infra provisioning time from 3 days to 4 hours via IDP',
-      'Led Kubernetes migration of 40+ microservices from EC2 to EKS',
-      'Achieved 99.99% SLA across production services with SLI/SLO framework',
+      'Manage security and governance controls across AWS organisation accounts in a regulated banking environment',
+      'Build and maintain Terraform IaC for IAM, networking, and security infrastructure',
+      'Administer Kubernetes (EKS) clusters and manage Helm-based workload deployments',
+      'Set up monitoring and alerting using Datadog and CloudWatch',
+      'Contribute to ISO27001-related compliance automation and cloud security posture management',
     ],
   },
   {
-    id: 'i-002',
-    company: 'Capgemini',
-    role: 'Cloud DevOps Engineer (AWS)',
-    period: 'Jun 2020 – Dec 2022',
-    location: 'Pune, India',
-    type: 'Full-time',
+    id: 'i-epam-002',
+    company: 'EPAM Systems',
+    role: 'Senior Security System Engineer',
+    period: 'Dec 2022 – Jul 2024',
+    location: 'Gdansk, Poland',
+    type: '1 yr 8 mo · Full-time',
     status: 'stopped',
-    tech: 'AWS, Docker, Kubernetes, Jenkins, Terraform, Python, Ansible',
+    tech: 'AWS, Transit Gateway, Datadog, CI/CD, AWS Backup, SCPs',
     highlights: [
-      'Built CI/CD pipelines for 15+ applications using Jenkins + GitHub Actions',
-      'Automated AMI baking and EC2 fleet management with Packer + Ansible',
-      'Implemented DevSecOps practices: SAST, DAST, secret scanning in pipelines',
-      'Reduced AWS spend by 35% via rightsizing and savings plan optimization',
+      'Re-architected AWS network topology using Transit Gateway with centralised network account',
+      'Built and managed CI/CD pipelines, improving deployment efficiency',
+      'Integrated AWS services with Datadog for monitoring, alerting, and incident tracking',
+      'Engineered cross-account, cross-region backup using AWS Backup (S3, EBS, RDS)',
+      'Defined and enforced Service Control Policies (SCPs) across AWS Organisation',
     ],
   },
   {
-    id: 'i-003',
-    company: 'Wipro Technologies',
-    role: 'Cloud Infrastructure Engineer',
-    period: 'Aug 2018 – May 2020',
-    location: 'Bengaluru, India',
-    type: 'Full-time',
+    id: 'i-edelweiss-003',
+    company: 'Edelweiss Tokio Life Insurance',
+    role: 'Senior Executive DevOps',
+    period: 'Mar 2022 – Dec 2022',
+    location: 'Mumbai, India',
+    type: '10 mo · Full-time',
     status: 'stopped',
-    tech: 'AWS, Linux, Bash, Python, CloudFormation, Nagios',
+    tech: 'Azure, AWS, Azure DevOps',
     highlights: [
-      'Managed 200+ Linux servers across AWS and on-premises environments',
-      'Automated routine ops tasks with Bash + Python, saving 20 hrs/week',
-      'Migrated legacy apps to AWS: EC2, RDS, S3, CloudFront',
-      'On-call SRE rotation: MTTR reduced by 45% via runbook automation',
+      'Managed Azure and AWS multi-cloud infrastructure',
+      'Managed Azure DevOps pipelines: permissions, build stages, release processes',
+      'Maintained 99.9% uptime through proactive monitoring and on-call incident response',
+    ],
+  },
+  {
+    id: 'i-godrej-004',
+    company: 'Godrej Housing Finance',
+    role: 'Assistant Manager Infrastructure',
+    period: 'Oct 2021 – Mar 2022',
+    location: 'Mumbai, India',
+    type: '6 mo · Full-time',
+    status: 'stopped',
+    tech: 'AWS, CloudWatch, Grafana, Prometheus, SAST/DAST',
+    highlights: [
+      'Owned end-to-end cloud infrastructure provisioning and operations',
+      'Reduced cloud costs by 20% through rightsizing and reserved instance planning',
+      'Implemented cloud security monitoring (config compliance, vulnerability detection, threat detection)',
+      'Set up monitoring with CloudWatch, Grafana, and Prometheus',
+      'Integrated SAST/DAST and secrets management into CI/CD pipelines',
+    ],
+  },
+  {
+    id: 'i-indicia-005',
+    company: 'Indicia Worldwide',
+    role: 'Cloud and Infrastructure Engineer',
+    period: 'Aug 2020 – Sep 2021',
+    location: 'Remote',
+    type: '1 yr 2 mo · Full-time',
+    status: 'stopped',
+    tech: 'AWS, Terraform, GitHub Actions, VMware, GuardDuty, WAF',
+    highlights: [
+      'Designed hybrid infrastructure across cloud and on-premises VMware',
+      'Designed and maintained GitHub Actions CI/CD pipelines for Terraform deployments',
+      'Configured IAM policies, security groups, WAF, and GuardDuty',
+    ],
+  },
+  {
+    id: 'i-abirla-006',
+    company: 'Aditya Birla Finance Limited',
+    role: 'Cloud Operations Engineer',
+    period: 'Jan 2018 – Aug 2020',
+    location: 'Goregaon, India',
+    type: '2 yrs 8 mo · Full-time',
+    status: 'stopped',
+    tech: 'AWS, Terraform, Ansible, Jenkins, Docker, Python, Datadog, PagerDuty',
+    highlights: [
+      'Led zero-downtime migration of all on-premises environments to cloud-native infrastructure',
+      'Reduced cloud billing by 40% through rightsizing and resource governance',
+      'Automated provisioning and patch management with Terraform, Ansible, Python — cutting deployment effort by 60%',
+      'Implemented large-scale Jenkins CI/CD pipelines, containerising apps with Docker',
+      'Deployed Sectona PAM for privileged access management',
+      'Resolved all security audit findings — firewall hardening, threat detection, compliance controls',
+      'Established monitoring with Datadog and PagerDuty',
     ],
   },
 ]
 
 const STATUS_STYLES = {
   running: { dot: '#1d8102', text: 'Current', bg: '#f0fff4' },
-  stopped: { dot: '#687078', text: 'Previous', bg: '#f8f8f8' },
+  stopped: { dot: '#0073bb', text: 'Previous', bg: '#f8f8f8' },
 }
 
 const thStyle = {
@@ -100,6 +152,17 @@ function StatusBadge({ status }) {
 }
 
 export default function Experience({ navigate }) {
+  const [expanded, setExpanded] = useState(new Set(['i-nordea-001']))
+
+  function toggleRow(id) {
+    setExpanded(prev => {
+      const next = new Set(prev)
+      if (next.has(id)) next.delete(id)
+      else next.add(id)
+      return next
+    })
+  }
+
   return (
     <div style={s.page}>
       <div style={s.secondaryNav}>
@@ -120,6 +183,11 @@ export default function Experience({ navigate }) {
           </div>
           <div style={{ display: 'flex', gap: '8px' }}>
             <button style={s.btnSecondary}>
+              <a href="https://www.linkedin.com/in/prathamesh-mokal" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
+                View LinkedIn ↗
+              </a>
+            </button>
+            <button style={s.btnSecondary}>
               <a href="https://github.com/prathamo28" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
                 View GitHub ↗
               </a>
@@ -128,14 +196,13 @@ export default function Experience({ navigate }) {
         </div>
 
         {/* Stats bar */}
-        <div style={{
-          display: 'flex', gap: '12px', marginBottom: '16px', flexWrap: 'wrap',
-        }}>
+        <div style={{ display: 'flex', gap: '12px', marginBottom: '16px', flexWrap: 'wrap' }}>
           {[
             { label: 'Total experience', value: '8+ years' },
-            { label: 'Companies', value: '3' },
+            { label: 'Companies', value: '6' },
             { label: 'Countries', value: '2 (India, Poland)' },
-            { label: 'Specialization', value: 'AWS · DevOps · SRE · Security' },
+            { label: 'Current role', value: 'Nordea · Gdansk' },
+            { label: 'Specialization', value: 'AWS · SRE · DevSecOps' },
           ].map(stat => (
             <div key={stat.label} style={{
               backgroundColor: '#ffffff',
@@ -143,7 +210,7 @@ export default function Experience({ navigate }) {
               borderRadius: '3px',
               padding: '10px 16px',
               flex: '1',
-              minWidth: '160px',
+              minWidth: '140px',
             }}>
               <div style={{ fontSize: '11px', color: '#687078', textTransform: 'uppercase', letterSpacing: '0.3px', marginBottom: '4px' }}>
                 {stat.label}
@@ -160,6 +227,7 @@ export default function Experience({ navigate }) {
             <table style={{ width: '100%', borderCollapse: 'collapse' }}>
               <thead>
                 <tr>
+                  <th style={{ ...thStyle, width: '28px' }}></th>
                   <th style={{ ...thStyle, width: '40px' }}>
                     <input type="checkbox" style={{ cursor: 'pointer' }} />
                   </th>
@@ -173,74 +241,81 @@ export default function Experience({ navigate }) {
                 </tr>
               </thead>
               <tbody>
-                {EXPERIENCE.map((exp, i) => (
-                  <Fragment key={exp.id}>
-                    <tr style={{ backgroundColor: i % 2 === 0 ? '#ffffff' : '#fafafa' }}>
-                      <td style={{ ...tdStyle, padding: '12px 14px' }}>
-                        <input type="checkbox" style={{ cursor: 'pointer' }} />
-                      </td>
-                      <td style={{ ...tdStyle, padding: '12px 14px' }}>
-                        <span style={{ fontFamily: 'monospace', fontSize: '12px', color: '#0073bb' }}>
-                          {exp.id}
-                        </span>
-                      </td>
-                      <td style={{ ...tdStyle, padding: '12px 14px' }}>
-                        <div style={{ fontWeight: 600, fontSize: '13px', color: '#16191f' }}>{exp.company}</div>
-                      </td>
-                      <td style={{ ...tdStyle, padding: '12px 14px' }}>
-                        <div style={{ fontSize: '13px', color: '#16191f' }}>{exp.role}</div>
-                        <div style={{ fontSize: '11px', color: '#687078', marginTop: '2px' }}>
-                          {exp.tech}
-                        </div>
-                      </td>
-                      <td style={{ ...tdStyle, padding: '12px 14px', fontSize: '12px', color: '#545b64', whiteSpace: 'nowrap' }}>
-                        {exp.period}
-                      </td>
-                      <td style={{ ...tdStyle, padding: '12px 14px', fontSize: '12px', color: '#545b64' }}>
-                        {exp.location}
-                      </td>
-                      <td style={{ ...tdStyle, padding: '12px 14px' }}>
-                        <span style={{
-                          backgroundColor: '#f0f4ff',
-                          color: '#0073bb',
-                          fontSize: '11px',
-                          padding: '2px 7px',
-                          borderRadius: '2px',
-                          border: '1px solid #d0e4f0',
-                        }}>
-                          {exp.type}
-                        </span>
-                      </td>
-                      <td style={{ ...tdStyle, padding: '12px 14px' }}>
-                        <StatusBadge status={exp.status} />
-                      </td>
-                    </tr>
-                    {/* Highlights row */}
-                    <tr style={{ backgroundColor: i % 2 === 0 ? '#fafeff' : '#f9f9f9' }}>
-                      <td colSpan={8} style={{ ...tdStyle, padding: '0 14px 12px 56px', borderBottom: '2px solid #eaeded' }}>
-                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-                          {exp.highlights.map((h, hi) => (
-                            <div key={hi} style={{
-                              display: 'flex',
-                              alignItems: 'flex-start',
-                              gap: '6px',
-                              fontSize: '12px',
-                              color: '#545b64',
-                              backgroundColor: '#f5f5f5',
-                              border: '1px solid #eaeded',
-                              borderRadius: '2px',
-                              padding: '4px 8px',
-                              maxWidth: '100%',
-                            }}>
-                              <span style={{ color: '#ec7211', flexShrink: 0, marginTop: '1px' }}>▸</span>
-                              {h}
+                {EXPERIENCE.map((exp, i) => {
+                  const isExpanded = expanded.has(exp.id)
+                  const rowBg = i % 2 === 0 ? '#ffffff' : '#fafafa'
+                  return (
+                    <>
+                      <tr
+                        key={exp.id}
+                        style={{ backgroundColor: rowBg, cursor: 'pointer' }}
+                        onClick={() => toggleRow(exp.id)}
+                      >
+                        <td style={{ ...tdStyle, padding: '12px 6px 12px 14px', fontSize: '11px', color: '#687078' }}>
+                          {isExpanded ? '▾' : '▸'}
+                        </td>
+                        <td style={{ ...tdStyle, padding: '12px 14px' }}>
+                          <input type="checkbox" style={{ cursor: 'pointer' }} onClick={e => e.stopPropagation()} />
+                        </td>
+                        <td style={{ ...tdStyle, padding: '12px 14px' }}>
+                          <span style={{ fontFamily: 'monospace', fontSize: '12px', color: '#0073bb' }}>
+                            {exp.id}
+                          </span>
+                        </td>
+                        <td style={{ ...tdStyle, padding: '12px 14px' }}>
+                          <div style={{ fontWeight: 600, fontSize: '13px', color: '#16191f' }}>{exp.company}</div>
+                        </td>
+                        <td style={{ ...tdStyle, padding: '12px 14px' }}>
+                          <div style={{ fontSize: '13px', color: '#16191f' }}>{exp.role}</div>
+                          <div style={{ fontSize: '11px', color: '#687078', marginTop: '2px' }}>
+                            {exp.tech}
+                          </div>
+                        </td>
+                        <td style={{ ...tdStyle, padding: '12px 14px', fontSize: '12px', color: '#545b64', whiteSpace: 'nowrap' }}>
+                          {exp.period}
+                        </td>
+                        <td style={{ ...tdStyle, padding: '12px 14px', fontSize: '12px', color: '#545b64' }}>
+                          {exp.location}
+                        </td>
+                        <td style={{ ...tdStyle, padding: '12px 14px' }}>
+                          <span style={{
+                            backgroundColor: '#f0f4ff',
+                            color: '#0073bb',
+                            fontSize: '11px',
+                            padding: '2px 7px',
+                            borderRadius: '2px',
+                            border: '1px solid #d0e4f0',
+                          }}>
+                            {exp.type}
+                          </span>
+                        </td>
+                        <td style={{ ...tdStyle, padding: '12px 14px' }}>
+                          <StatusBadge status={exp.status} />
+                        </td>
+                      </tr>
+                      {isExpanded && (
+                        <tr key={exp.id + '-details'} style={{ backgroundColor: i % 2 === 0 ? '#fafeff' : '#f9f9f9' }}>
+                          <td colSpan={9} style={{ ...tdStyle, padding: '0 14px 14px 68px', borderBottom: '2px solid #eaeded' }}>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', paddingTop: '6px' }}>
+                              {exp.highlights.map((h, hi) => (
+                                <div key={hi} style={{
+                                  display: 'flex',
+                                  alignItems: 'flex-start',
+                                  gap: '8px',
+                                  fontSize: '12px',
+                                  color: '#545b64',
+                                }}>
+                                  <span style={{ color: '#ec7211', flexShrink: 0, marginTop: '1px' }}>▸</span>
+                                  {h}
+                                </div>
+                              ))}
                             </div>
-                          ))}
-                        </div>
-                      </td>
-                    </tr>
-                  </Fragment>
-                ))}
+                          </td>
+                        </tr>
+                      )}
+                    </>
+                  )
+                })}
               </tbody>
             </table>
           </div>

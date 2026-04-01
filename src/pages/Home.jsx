@@ -73,13 +73,13 @@ const s = {
 /* ── Service icons grid for "Recently used skills" ─────────────────── */
 const SKILL_ICONS = [
   { label: 'AWS', color: '#ec7211', bg: '#fff8f2', abbr: 'AWS' },
-  { label: 'Azure', color: '#0078d4', bg: '#f0f7ff', abbr: 'AZ' },
-  { label: 'GCP', color: '#4285f4', bg: '#f0f5ff', abbr: 'GCP' },
   { label: 'Kubernetes', color: '#326ce5', bg: '#f0f4ff', abbr: 'K8s' },
   { label: 'Terraform', color: '#7b42bc', bg: '#f7f2ff', abbr: 'TF' },
   { label: 'Docker', color: '#0db7ed', bg: '#f0faff', abbr: 'DCK' },
+  { label: 'Datadog', color: '#632ca6', bg: '#f5f0ff', abbr: 'DD' },
   { label: 'Python', color: '#3776ab', bg: '#f0f5ff', abbr: 'PY' },
-  { label: 'CI/CD', color: '#d13212', bg: '#fff5f5', abbr: 'CI' },
+  { label: 'GH Actions', color: '#2088ff', bg: '#f0f5ff', abbr: 'GHA' },
+  { label: 'DevSecOps', color: '#d13212', bg: '#fff5f5', abbr: 'DSO' },
 ]
 
 function SkillIconGrid({ navigate }) {
@@ -136,10 +136,10 @@ function SkillIconGrid({ navigate }) {
 /* ── Profile Stats ──────────────────────────────────────────────────── */
 function ProfileStats() {
   const rows = [
-    { label: 'Certifications active', value: '4', link: true },
-    { label: 'Projects shipped', value: '12' },
+    { label: 'Certifications active', value: '3', link: true },
+    { label: 'Companies worked', value: '6' },
+    { label: 'Years of experience', value: '8+' },
     { label: 'GitHub repos', value: '30+' },
-    { label: 'LinkedIn connections', value: '500+' },
   ]
   return (
     <div style={s.widgetBody}>
@@ -156,7 +156,7 @@ function ProfileStats() {
             fontWeight: 600,
             marginTop: '2px',
           }}>
-            Full-time · Contract · Remote
+            Senior SRE · DevSecOps · Platform Eng
           </div>
         </div>
       </div>
@@ -187,23 +187,23 @@ function AboutWidget() {
     {
       icon: '☁',
       color: '#ec7211',
-      title: '8+ Years Cloud & DevOps',
-      sub: 'AWS · Azure · GCP · Kubernetes · Terraform',
+      title: 'Senior Cloud & SRE Engineer — 8+ yrs',
+      sub: 'AWS (Expert) · Azure · GCP · Kubernetes · Terraform · DevSecOps',
     },
     {
       icon: '◎',
       color: '#0073bb',
-      title: 'Based in Poland · Open to remote',
-      sub: 'EU time zone · Available immediately',
+      title: 'Gdansk, Poland · EU Blue Card holder',
+      sub: 'Open to remote / hybrid — Poland & EMEA · No visa sponsorship needed',
     },
     {
       icon: '✉',
       color: '#1d8102',
-      title: 'Get in touch',
+      title: 'prathamesh.mokal@hotmail.com',
       sub: null,
       links: [
         { label: 'GitHub: prathamo28', href: 'https://github.com/prathamo28' },
-        { label: 'LinkedIn', href: 'https://linkedin.com/in/prathamesh-mokal' },
+        { label: 'LinkedIn', href: 'https://www.linkedin.com/in/prathamesh-mokal' },
       ],
     },
   ]
@@ -262,36 +262,36 @@ function AboutWidget() {
 /* ── Projects table widget ──────────────────────────────────────────── */
 const HOME_PROJECTS = [
   {
-    id: 'mlops-pipeline-v2',
-    desc: 'End-to-end ML training + deployment pipeline on AWS',
-    stack: 'Python, SageMaker, Step Functions, ECR',
-    type: 'MLOps',
+    id: 'nordea-sre-platform',
+    desc: 'Banking SRE platform — EKS cluster management, Terraform IaC, ISO27001 compliance automation',
+    stack: 'EKS, Terraform, Datadog, CloudWatch, Helm',
+    type: 'Banking SRE',
     status: 'running',
     region: 'eu-central-1',
   },
   {
-    id: 'devops-agent-poc',
-    desc: 'AI-powered DevOps automation agent with Claude',
-    stack: 'Python, AWS Bedrock, Lambda, DynamoDB',
-    type: 'AI/DevOps',
-    status: 'active',
-    region: 'eu-west-1',
-  },
-  {
-    id: 'cloud-cost-optimizer',
-    desc: 'Automated tagging, rightsizing, and savings plans mgmt',
-    stack: 'Terraform, AWS Cost Explorer, Lambda, SNS',
-    type: 'FinOps',
-    status: 'running',
-    region: 'eu-central-1',
-  },
-  {
-    id: 'k8s-security-hardening',
-    desc: 'CIS benchmark automation for Kubernetes clusters',
-    stack: 'Kubernetes, Falco, OPA Gatekeeper, Helm',
+    id: 'epam-aws-network-rearch',
+    desc: 'Re-architected AWS network topology with Transit Gateway and centralised network account',
+    stack: 'Transit Gateway, SCPs, AWS Backup, Datadog',
     type: 'Security',
+    status: 'running',
+    region: 'eu-central-1',
+  },
+  {
+    id: 'godrej-cost-optimisation',
+    desc: 'Reduced cloud costs 20% via rightsizing, reserved instances, and monitoring stack setup',
+    stack: 'AWS, CloudWatch, Grafana, Prometheus, SAST/DAST',
+    type: 'FinOps',
     status: 'stopped',
-    region: 'eu-west-1',
+    region: 'ap-south-1',
+  },
+  {
+    id: 'abirla-cloud-migration',
+    desc: 'Zero-downtime migration of all on-prem environments to cloud-native; 40% billing reduction',
+    stack: 'Terraform, Jenkins, Docker, Ansible, Python, Datadog',
+    type: 'Migration',
+    status: 'stopped',
+    region: 'ap-south-1',
   },
 ]
 
@@ -346,7 +346,7 @@ function ProjectsWidget({ navigate }) {
             <circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/>
           </svg>
           <input
-            placeholder="Filter projects..."
+            placeholder="Filter instances..."
             style={{ border: 'none', outline: 'none', fontSize: '12px', color: '#16191f', width: '100%', background: 'transparent' }}
           />
         </div>
@@ -355,9 +355,9 @@ function ProjectsWidget({ navigate }) {
         </button>
         <button
           style={{ ...s.btnPrimary, fontSize: '12px', padding: '4px 10px' }}
-          onClick={() => navigate('projects')}
+          onClick={() => navigate('experience')}
         >
-          + Launch project ▾
+          View all experience ▾
         </button>
       </div>
 
@@ -369,7 +369,7 @@ function ProjectsWidget({ navigate }) {
               <th style={thStyle}>
                 <input type="checkbox" style={{ cursor: 'pointer' }} />
               </th>
-              <th style={thStyle}>Project ID</th>
+              <th style={thStyle}>Instance ID</th>
               <th style={thStyle}>Description</th>
               <th style={thStyle}>Tech Stack</th>
               <th style={thStyle}>Type</th>
@@ -436,16 +436,16 @@ const tdStyle = {
 
 /* ── Certifications mini widget ─────────────────────────────────────── */
 const CERTS_MINI = [
-  { name: 'AWS Solutions Architect Pro', exp: 'Dec 2026' },
-  { name: 'AWS DevOps Engineer Pro', exp: 'Mar 2027' },
-  { name: 'Certified Kubernetes Admin', exp: 'Aug 2026' },
+  { name: 'AWS Security – Specialty', exp: 'Active' },
+  { name: 'AWS Solutions Architect – Associate', exp: 'Active' },
+  { name: 'HashiCorp Terraform Associate', exp: 'Active' },
 ]
 
 function CertsWidget({ navigate }) {
   return (
     <div style={s.widgetBody}>
       <div style={{ display: 'flex', alignItems: 'flex-end', gap: '10px', marginBottom: '12px' }}>
-        <div style={{ fontSize: '48px', fontWeight: 700, color: '#16191f', lineHeight: 1 }}>4</div>
+        <div style={{ fontSize: '48px', fontWeight: 700, color: '#16191f', lineHeight: 1 }}>3</div>
         <div style={{ paddingBottom: '6px' }}>
           <div style={{ fontSize: '13px', color: '#545b64' }}>Active certifications</div>
           <div style={{ fontSize: '11px', color: '#1d8102', marginTop: '2px' }}>● All current</div>
@@ -468,7 +468,7 @@ function CertsWidget({ navigate }) {
               {c.name}
             </button>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexShrink: 0 }}>
-              <span style={{ fontSize: '11px', color: '#687078' }}>Exp: {c.exp}</span>
+              <span style={{ fontSize: '11px', color: '#687078' }}>{c.exp}</span>
               <span style={{ color: '#1d8102', fontSize: '14px' }}>✓</span>
             </div>
           </div>
@@ -528,11 +528,11 @@ export default function Home({ navigate }) {
         {/* Row 2 — Projects spans 2 cols */}
         <div style={{ gridColumn: '1 / span 2' }}>
           <Widget
-            title="Projects"
-            footerLink="View all projects"
-            footerLinkLabel="View all projects →"
-            footerRight="Showing 4 of 12"
-            onFooterClick={() => navigate('projects')}
+            title="Work Experience Instances"
+            footerLink="View all experience"
+            footerLinkLabel="View all experience →"
+            footerRight="Showing 4 of 6"
+            onFooterClick={() => navigate('experience')}
           >
             <ProjectsWidget navigate={navigate} />
           </Widget>

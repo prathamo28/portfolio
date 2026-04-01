@@ -163,56 +163,63 @@ const s = {
 
 const CLOUD_SKILLS = [
   { name: 'AWS', pct: 95, color: '#ec7211', icon: 'AWS' },
-  { name: 'Azure', pct: 75, color: '#0078d4', icon: 'AZ' },
+  { name: 'Azure', pct: 80, color: '#0078d4', icon: 'AZ' },
   { name: 'GCP', pct: 65, color: '#4285f4', icon: 'GCP' },
 ]
 
 const CLOUD_TAGS = [
   { label: 'EC2 / EKS', color: '#0073bb' },
-  { label: 'RDS / Aurora', color: '#0073bb' },
   { label: 'VPC / Transit GW', color: '#0073bb' },
-  { label: 'Lambda / API GW', color: '#0073bb' },
+  { label: 'IAM / SCPs', color: '#0073bb' },
   { label: 'S3 / CloudFront', color: '#0073bb' },
-  { label: 'IAM / SCP', color: '#0073bb' },
-  { label: 'CloudWatch / X-Ray', color: '#0073bb' },
-  { label: 'AKS / ACA', color: '#0078d4' },
+  { label: 'GuardDuty / Security Hub', color: '#0073bb' },
+  { label: 'AWS Backup', color: '#0073bb' },
+  { label: 'CloudFormation', color: '#0073bb' },
+  { label: 'AKS / Azure DevOps', color: '#0078d4' },
   { label: 'GKE / Cloud Run', color: '#4285f4' },
 ]
 
 const DEVOPS_SKILLS = [
-  { name: 'Docker', pct: 92, color: '#0db7ed' },
-  { name: 'Kubernetes', pct: 90, color: '#326ce5' },
-  { name: 'Terraform', pct: 90, color: '#7b42bc' },
+  { name: 'Kubernetes', pct: 92, color: '#326ce5' },
+  { name: 'Terraform', pct: 92, color: '#7b42bc' },
+  { name: 'Docker', pct: 88, color: '#0db7ed' },
   { name: 'GitHub Actions', pct: 85, color: '#2088ff' },
-  { name: 'Jenkins', pct: 80, color: '#d33833' },
+  { name: 'Ansible', pct: 80, color: '#d33833' },
+  { name: 'Jenkins', pct: 80, color: '#c45000' },
   { name: 'Helm', pct: 78, color: '#326ce5' },
+  { name: 'ArgoCD', pct: 75, color: '#e06b32' },
 ]
 
 const DEVOPS_TAGS = [
   { label: 'Helm', color: '#0073bb' },
   { label: 'ArgoCD', color: '#0073bb' },
-  { label: 'Kustomize', color: '#0073bb' },
   { label: 'Ansible', color: '#0073bb' },
-  { label: 'Packer', color: '#0073bb' },
-  { label: 'Vault', color: '#0073bb' },
-  { label: 'Prometheus', color: '#0073bb' },
-  { label: 'Grafana', color: '#0073bb' },
+  { label: 'GitLab CI', color: '#0073bb' },
+  { label: 'Azure DevOps', color: '#0073bb' },
+  { label: 'Python', color: '#0073bb' },
+  { label: 'Bash', color: '#0073bb' },
+  { label: 'PowerShell', color: '#0073bb' },
   { label: 'ELK Stack', color: '#0073bb' },
 ]
 
 const SEC_SKILLS = [
-  { name: 'DevSecOps', pct: 88, color: '#d13212' },
-  { name: 'AWS Security', pct: 88, color: '#ec7211' },
-  { name: 'SRE / Observability', pct: 85, color: '#1d8102' },
+  { name: 'DevSecOps', pct: 90, color: '#d13212' },
+  { name: 'GuardDuty/Sec Hub', pct: 88, color: '#ec7211' },
+  { name: 'SAST / DAST', pct: 88, color: '#7b42bc' },
+  { name: 'Datadog', pct: 85, color: '#632ca6' },
+  { name: 'Prometheus/Grafana', pct: 85, color: '#e6522c' },
+  { name: 'ISO 27001', pct: 82, color: '#1d8102' },
 ]
 
 const SEC_TAGS = [
   { label: 'AWS GuardDuty', color: '#545b64' },
-  { label: 'Falco', color: '#545b64' },
-  { label: 'OPA / Gatekeeper', color: '#545b64' },
+  { label: 'AWS WAF', color: '#545b64' },
+  { label: 'Security Hub', color: '#545b64' },
   { label: 'SAST / DAST', color: '#545b64' },
-  { label: 'SLIs / SLOs / SLAs', color: '#545b64' },
-  { label: 'Chaos Engineering', color: '#545b64' },
+  { label: 'ISO 27001', color: '#545b64' },
+  { label: 'Datadog', color: '#545b64' },
+  { label: 'CloudWatch', color: '#545b64' },
+  { label: 'PagerDuty', color: '#545b64' },
   { label: 'Incident Response', color: '#545b64' },
 ]
 
@@ -323,11 +330,11 @@ export default function Skills({ navigate }) {
             </div>
           </div>
 
-          {/* Security & SRE */}
+          {/* Security & Monitoring */}
           <div style={s.panel}>
             <div style={s.panelHeader}>
               <span style={{ color: '#d13212' }}>🛡</span>
-              Security &amp; SRE
+              Security &amp; Monitoring
             </div>
             <div style={s.panelBody}>
               {SEC_SKILLS.map(sk => (
